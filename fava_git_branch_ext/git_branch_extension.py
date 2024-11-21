@@ -9,23 +9,22 @@ import subprocess
 from fava.ext import FavaExtensionBase
 
 class GitBranchExtension(FavaExtensionBase):
-    def __init__(self, app, ledger):
-        super().__init__(app, ledger)
-        branch_name = self.git_branch_name()
-        self.report_title = "Branch: {}".format(branch_name)
+    
+    report_title = "Current Branch"
 
     def git_branch_name(self):
         """Get the current Git branch name."""
         try:
             result = subprocess.run(
                 ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-                cwd="/Ledger",
+                cwd="/Ledger",  # Path to your git repo
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
             )
             if result.returncode == 0:
                 return result.stdout.strip()
-            return "No branch"
+            else:
+                return "No branch"
         except Exception as e:
             return f"Error: {str(e)}"

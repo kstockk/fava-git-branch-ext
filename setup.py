@@ -12,4 +12,8 @@ setup(
             'git_branch_extension = fava_git_branch_ext:GitBranchExtension',
         ],
     },
+    include_package_data=True,  # Ensure non-Python files are included
+    package_data={
+        'fava_git_branch_ext': ['templates/*'],  # Include templates folder
+    },
 )
