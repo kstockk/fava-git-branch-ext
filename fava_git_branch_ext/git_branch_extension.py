@@ -6,8 +6,9 @@ YYYY-MM-DD custom "fava-extension" "fava_git_branch_ext"
 """
 
 import subprocess
+from fava.ext import FavaExtensionBase
 
-class GitBranchExtension():
+class GitBranchExtension(FavaExtensionBase):
     def __init__(self, app, ledger):
         super().__init__(app, ledger)
         branch_name = self.git_branch_name()
