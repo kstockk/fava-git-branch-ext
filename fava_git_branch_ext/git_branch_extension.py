@@ -18,7 +18,7 @@ class GitBranchExtension():
         try:
             result = subprocess.run(
                 ["git", "rev-parse", "--abbrev-ref", "HEAD"],
-                cwd="/Users/khanhnguyen/Ledger",
+                cwd="/Ledger",
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
